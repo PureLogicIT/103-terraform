@@ -5,7 +5,7 @@ Modules make it easier to deploy complex resources. Resources that travers multi
 
 For example, the network we created in this example. We created a VPC, then a subnet and an Internet Gateway with a default route for that gateway
 *main.tf*
-```json
+```
 # VPC
 resource "aws_vpc" "vpc" {
   cidr_block = "10.N.0.0/16"
@@ -38,7 +38,7 @@ resource "aws_route" "route" {
 With a module, all of that can be created at once
 
 *main.tf*
-```json
+```
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
 

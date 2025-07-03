@@ -41,7 +41,7 @@ Create a new file called `main.tf`, this will be the primary definition of the o
 ### Prerequisites
 In that file, start by declaring the versions we want to use.
 
-```json
+```
 terraform {
   required_providers {
     aws = {
@@ -62,7 +62,7 @@ These scripts have also been tested on terraform cli version 1.12 and it will se
 Next we will provide some minimum data to the aws plugin. This information can be found in the plugin's [documentation|https://registry.terraform.io/providers/hashicorp/aws/5.99.1/docs]
 
 *main.tf*
-```json
+```
 provider "aws" {
   region = "ca-central-1"
 }
@@ -73,7 +73,7 @@ provider "aws" {
 For the first example. We'll deploy a public network, with a internet gateway and a VM that will be remotely accesible
 
 *main.tf*
-```json
+```
 # VPC
 resource "aws_vpc" "vpc" {
   cidr_block = "10.N.0.0/16"
@@ -131,7 +131,7 @@ curl ifconfig.me
 ```
 
 *main.tf*
-```json
+```
 # Internet Gateway
 resource "aws_internet_gateway" "ig" {
   vpc_id = aws_vpc.vpc.id
@@ -175,7 +175,7 @@ terraform apply
 
 
 *main.tf*
-```json
+```
 resource "aws_key_pair" "key" {
   key_name   = "userN"
   public_key = "ssh-rsa AAAAB... email@example.com"

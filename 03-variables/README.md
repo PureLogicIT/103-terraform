@@ -7,7 +7,7 @@ Until now everything has been defined as we used it. But Terraform ofers the use
 
 One thing that would need to be set once and used often is the IP address to allow for our security group. As we open more and more services we'll always want it to be accessible from here only.
 
-```json
+```
 
 variable "lab_ip" {
   type = string
@@ -44,7 +44,7 @@ terraform apply
 
 When a default value isn't given Terraform will ask for a value. We'll create a variable asking for which user number you are.
 
-```json
+```
 variable "user" {
   type = string
 }
@@ -60,7 +60,7 @@ terraform apply
 Modify your main.tf to use the new variable instead of being hardcoded
 
 *main.tf*
-```json
+```
 resource "aws_vpc" "vpc" {
   cidr_block = "10.${var.user}.0.0/16"
   tags = {
@@ -109,7 +109,7 @@ If you would want more then 1 VM created in AWS you would create an Auto-Scallin
 Start by creating a variable asking for the ammount of VMs to create.
 
 *main.tf*
-```json
+```
 variable "num_vms" {
   type = number
   description = "Number of VMs to create"
@@ -119,7 +119,7 @@ variable "num_vms" {
 Then add the `count` to the aws_instance.
 
 *main.tf*
-```json
+```
 resource "aws_instance" "vm" {
   count                       = "${var.num_vms}" 
   ami                         = data.aws_ami.ubuntu.id
@@ -144,7 +144,7 @@ terraform apply
 To keep everything organised the standard is to create a `variables.tf` file and declare all your variables there.
 
 *variables.tf*
-```json
+```
 variable "num_vms" {
   type = number
   description = "Number of VMs to create"

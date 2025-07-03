@@ -10,7 +10,7 @@ terraform destroy
 ## Read
 
 *main.tf*
-```json
+```
 data "aws_ami" "ubuntu" {
   most_recent = true
 
@@ -46,7 +46,7 @@ resource "aws_instance" "vm" {
 Simple change
 
 *main.tf*
-```json
+```
 resource "aws_instance" "vm" {
   ami                         = data.aws_ami.ubuntu.id
   instance_type               = "t2.micro"
@@ -73,7 +73,7 @@ Terraform will update it's state and see the change and make it match the requir
 
 
 *main.tf*
-```json
+```
 data "aws_ami" "ubuntu" {
   most_recent = true
 
@@ -97,7 +97,7 @@ Notice `-/+ destroy and then create replacement`, meaning the OS disk used isn't
 ## Output
 
 *main.tf*
-```json
+```
 output "public_ip"{
   value = aws_instance.vm.public_ip
   description = "The public IP address"
